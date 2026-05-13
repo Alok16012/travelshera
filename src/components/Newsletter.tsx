@@ -1,0 +1,94 @@
+"use client";
+import { useState } from "react";
+import { Send, CheckCircle } from "lucide-react";
+
+export default function Newsletter() {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) setSubmitted(true);
+  };
+
+  return (
+    <section className="py-16 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative bg-gradient-to-br from-orange-500 to-orange-600 rounded-3xl overflow-hidden">
+          {/* Background pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full translate-y-1/2 -translate-x-1/2" />
+          </div>
+
+          <div className="relative z-10 px-8 py-14 sm:px-16 flex flex-col lg:flex-row items-center justify-between gap-10">
+            {/* Left */}
+            <div className="text-center lg:text-left">
+              <p className="text-orange-100 font-semibold text-sm uppercase tracking-widest mb-2">
+                Stay Updated
+              </p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
+                Never Miss an Adventure!
+              </h2>
+              <p className="text-orange-100 text-lg max-w-md">
+                Subscribe to get exclusive deals, early bird offers, travel tips and the latest trip announcements straight to your inbox.
+              </p>
+              <div className="flex flex-wrap gap-4 mt-6 justify-center lg:justify-start">
+                {["Early Bird Discounts", "New Trip Alerts", "Travel Tips"].map((item) => (
+                  <div key={item} className="flex items-center gap-1.5 text-white/80 text-sm">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right - Form */}
+            <div className="w-full lg:w-auto lg:min-w-[400px]">
+              {submitted ? (
+                <div className="bg-white rounded-2xl p-8 text-center">
+                  <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-3" />
+                  <p className="text-gray-900 font-bold text-xl">You&#39;re in!</p>
+                  <p className="text-gray-500 mt-1">Welcome to the Shera Travels family. Get ready for your Kashmir adventure!</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-6 shadow-xl">
+                  <p className="text-gray-800 font-bold text-lg mb-4">
+                    Join 5,000+ Happy Travellers
+                  </p>
+                  <div className="mb-4">
+                    <input
+                      type="text"
+                      placeholder="Your Name"
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-800 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Your Email Address"
+                      required
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-800 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2 transition-all duration-200"
+                  >
+                    <Send className="w-4 h-4" />
+                    Subscribe Now — It&#39;s Free!
+                  </button>
+                  <p className="text-gray-400 text-xs text-center mt-3">
+                    No spam. Unsubscribe anytime. We respect your privacy.
+                  </p>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
