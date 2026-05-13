@@ -66,64 +66,78 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-10 sm:py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <p className="text-orange-500 font-semibold text-sm uppercase tracking-widest mb-2">
+        <div className="text-center mb-6 sm:mb-12">
+          <p className="text-orange-500 font-semibold text-xs sm:text-sm uppercase tracking-widest mb-1 sm:mb-2">
             Traveller Stories
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">
             What Our Travellers Say
           </h2>
-          <p className="text-gray-500 max-w-xl mx-auto">
-            Real stories from real travellers who explored Kashmir and beyond with Shera Travels.
-          </p>
           {/* Overall Rating */}
-          <div className="flex items-center justify-center gap-2 mt-4">
+          <div className="flex items-center justify-center gap-1 sm:gap-2 mt-2 sm:mt-4">
             {[1, 2, 3, 4, 5].map((s) => (
-              <Star key={s} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+              <Star key={s} className="w-4 h-4 sm:w-5 sm:h-5 fill-yellow-400 text-yellow-400" />
             ))}
-            <span className="text-gray-800 font-bold ml-1">4.9</span>
-            <span className="text-gray-500 text-sm">/ 5 based on 500+ reviews</span>
+            <span className="text-gray-800 font-bold ml-1 text-sm sm:text-base">4.9</span>
+            <span className="text-gray-500 text-xs sm:text-sm">/ 5 based on 500+ reviews</span>
           </div>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Mobile: horizontal scroll */}
+        <div className="sm:hidden -mx-4 px-4">
+          <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-3">
+            {testimonials.map((t) => (
+              <div
+                key={t.id}
+                className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 relative w-72 shrink-0"
+              >
+                <Quote className="absolute top-4 right-4 w-6 h-6 text-orange-100 fill-orange-100" />
+                <div className="flex items-center gap-1 mb-2">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <Star key={s} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <p className="text-gray-600 text-xs leading-relaxed mb-3 line-clamp-4">
+                  &ldquo;{t.text}&rdquo;
+                </p>
+                <span className="inline-block bg-orange-50 text-orange-600 text-[10px] font-medium px-2.5 py-1 rounded-full border border-orange-100 mb-3">
+                  📍 {t.trip}
+                </span>
+                <div className="flex items-center gap-2 pt-3 border-t border-gray-100">
+                  <img src={t.avatar} alt={t.name} className="w-8 h-8 rounded-full object-cover" />
+                  <div>
+                    <p className="font-bold text-gray-900 text-xs">{t.name}</p>
+                    <p className="text-gray-400 text-[10px]">{t.location} · {t.date}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: grid */}
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((t) => (
             <div
               key={t.id}
               className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 relative"
             >
               <Quote className="absolute top-5 right-5 w-8 h-8 text-orange-100 fill-orange-100" />
-
-              {/* Stars */}
               <div className="flex items-center gap-1 mb-3">
                 {[1, 2, 3, 4, 5].map((s) => (
-                  <Star
-                    key={s}
-                    className={`w-4 h-4 ${s <= t.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-200"}`}
-                  />
+                  <Star key={s} className={`w-4 h-4 ${s <= t.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-200"}`} />
                 ))}
               </div>
-
-              {/* Text */}
               <p className="text-gray-600 text-sm leading-relaxed mb-5 line-clamp-3">
                 &ldquo;{t.text}&rdquo;
               </p>
-
-              {/* Trip badge */}
               <span className="inline-block bg-orange-50 text-orange-600 text-xs font-medium px-3 py-1 rounded-full border border-orange-100 mb-4">
                 📍 {t.trip}
               </span>
-
-              {/* Author */}
               <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
-                <img
-                  src={t.avatar}
-                  alt={t.name}
-                  className="w-10 h-10 rounded-full object-cover"
-                />
+                <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover" />
                 <div>
                   <p className="font-bold text-gray-900 text-sm">{t.name}</p>
                   <p className="text-gray-400 text-xs">{t.location} · {t.date}</p>

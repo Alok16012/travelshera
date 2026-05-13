@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import MobileBottomNav from "@/components/MobileBottomNav";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "JustWravel – India's #1 Social Travel Community",
-  description: "Book group trips, adventure travel, weekend getaways, and more. India's best travel community.",
+  title: "Shera Travels – Kashmir's Trusted Travel Company",
+  description: "Book Kashmir tours, Ladakh packages, honeymoon trips, and pilgrimage tours. Expert travel services with 10+ years experience.",
 };
 
 export default function RootLayout({
@@ -16,7 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} pb-16 lg:pb-0`}>
+        {children}
+        <WhatsAppButton />
+        <MobileBottomNav />
+      </body>
     </html>
   );
 }

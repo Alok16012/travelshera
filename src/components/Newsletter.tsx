@@ -12,25 +12,25 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-10 sm:py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative bg-gradient-to-br from-orange-500 to-orange-600 rounded-3xl overflow-hidden">
+        <div className="relative bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl sm:rounded-3xl overflow-hidden">
           {/* Background pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-white rounded-full translate-y-1/2 -translate-x-1/2" />
           </div>
 
-          <div className="relative z-10 px-8 py-14 sm:px-16 flex flex-col lg:flex-row items-center justify-between gap-10">
+          <div className="relative z-10 px-5 py-8 sm:px-8 sm:py-14 lg:px-16 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-10">
             {/* Left */}
             <div className="text-center lg:text-left">
-              <p className="text-orange-100 font-semibold text-sm uppercase tracking-widest mb-2">
+              <p className="text-orange-100 font-semibold text-xs sm:text-sm uppercase tracking-widest mb-1 sm:mb-2">
                 Stay Updated
               </p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
+              <h2 className="text-2xl sm:text-4xl font-bold text-white mb-2 sm:mb-3">
                 Never Miss an Adventure!
               </h2>
-              <p className="text-orange-100 text-lg max-w-md">
+              <p className="text-orange-100 text-sm sm:text-lg max-w-md hidden sm:block">
                 Subscribe to get exclusive deals, early bird offers, travel tips and the latest trip announcements straight to your inbox.
               </p>
               <div className="flex flex-wrap gap-4 mt-6 justify-center lg:justify-start">

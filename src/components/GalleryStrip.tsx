@@ -1,31 +1,50 @@
 const photos = [
-  { src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80", label: "Spiti Valley" },
-  { src: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&q=80", label: "Kedarkantha" },
-  { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80", label: "Andaman" },
+  { src: "https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80", label: "Dal Lake" },
+  { src: "https://images.unsplash.com/photo-1566438480900-0609be27a4be?w=400&q=80", label: "Gulmarg" },
+  { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80", label: "Pahalgam" },
   { src: "https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?w=400&q=80", label: "Ladakh" },
-  { src: "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=400&q=80", label: "Meghalaya" },
-  { src: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=400&q=80", label: "Goa" },
-  { src: "https://images.unsplash.com/photo-1605649461784-eec84f8e5f0f?w=400&q=80", label: "Manali" },
-  { src: "https://images.unsplash.com/photo-1455156218388-5e61b526818b?w=400&q=80", label: "Chopta" },
+  { src: "https://images.unsplash.com/photo-1605649461784-eec84f8e5f0f?w=400&q=80", label: "Sonamarg" },
+  { src: "https://images.unsplash.com/photo-1455156218388-5e61b526818b?w=400&q=80", label: "Shikara Ride" },
+  { src: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&q=80", label: "Snow Valley" },
+  { src: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80", label: "Pangong Lake" },
 ];
 
 export default function GalleryStrip() {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-10 sm:py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
-          <p className="text-orange-500 font-semibold text-sm uppercase tracking-widest mb-2">
-            #JustWravel on Instagram
+        <div className="text-center mb-6 sm:mb-10">
+          <p className="text-orange-500 font-semibold text-xs sm:text-sm uppercase tracking-widest mb-1 sm:mb-2">
+            #SheraTravels on Instagram
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-            Moments From Our Trips
+          <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-2 sm:mb-3">
+            Kashmir Through Our Lens
           </h2>
-          <p className="text-gray-500 max-w-xl mx-auto">
-            Real photos from real travellers. Follow us on Instagram for daily travel inspiration.
+          <p className="text-gray-500 text-sm max-w-xl mx-auto hidden sm:block">
+            Real photos from real travellers. Follow us on Instagram for daily Kashmir inspiration.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        {/* Mobile: horizontal scroll */}
+        <div className="sm:hidden -mx-4 px-4">
+          <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-3">
+            {photos.map((photo, i) => (
+              <div key={i} className="relative overflow-hidden rounded-2xl shrink-0 w-48 h-48">
+                <img
+                  src={photo.src}
+                  alt={photo.label}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-2">
+                  <p className="text-white text-xs font-semibold">{photo.label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: grid */}
+        <div className="hidden sm:grid sm:grid-cols-4 gap-3">
           {photos.map((photo, i) => (
             <div
               key={i}
@@ -49,15 +68,17 @@ export default function GalleryStrip() {
           ))}
         </div>
 
-        <div className="text-center mt-8">
+        <div className="text-center mt-6 sm:mt-8">
           <a
-            href="#"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-orange-400 text-white font-semibold px-7 py-3 rounded-full hover:shadow-lg hover:shadow-pink-300/40 transition-all duration-200"
+            href="https://www.instagram.com/sheratravels"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-orange-400 text-white font-semibold px-6 sm:px-7 py-2.5 sm:py-3 rounded-full hover:shadow-lg hover:shadow-pink-300/40 transition-all duration-200 text-sm sm:text-base"
           >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
             </svg>
-            Follow @JustWravel on Instagram
+            Follow @SheraTravels on Instagram
           </a>
         </div>
       </div>

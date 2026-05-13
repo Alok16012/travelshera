@@ -126,24 +126,24 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-[#0f172a] border-t border-white/10">
-          <div className="px-4 py-4 space-y-1">
+        <div className="lg:hidden bg-[#0f172a] border-t border-white/10 shadow-2xl">
+          <div className="px-4 py-3 space-y-0.5">
             {navLinks.map((link) => (
               <div key={link.label}>
                 <Link
                   href={link.href}
-                  className="block text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="flex items-center gap-2 text-gray-300 hover:text-white hover:bg-white/5 px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors"
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
                 </Link>
                 {link.dropdown && (
-                  <div className="pl-6 space-y-1">
+                  <div className="ml-3 pl-3 border-l border-white/10 space-y-0.5 mb-1">
                     {link.dropdown.map((item) => (
                       <Link
                         key={item.label}
                         href={item.href}
-                        className="block text-gray-400 hover:text-orange-400 px-3 py-1.5 text-xs"
+                        className="block text-gray-400 hover:text-orange-400 px-3 py-2 text-xs rounded-lg hover:bg-white/5 transition-colors"
                         onClick={() => setMenuOpen(false)}
                       >
                         {item.label}
@@ -153,20 +153,27 @@ export default function Navbar() {
                 )}
               </div>
             ))}
-            <div className="pt-4 flex flex-col gap-2">
+            <div className="pt-3 pb-1 flex flex-col gap-2.5 border-t border-white/10 mt-2">
               <Link
                 href="/trips"
-                className="block text-center bg-orange-500 text-white py-2 rounded-full text-sm font-semibold"
+                className="block text-center bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl text-sm font-bold transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
-                Explore Tours
+                🏔️ Explore Tours
               </Link>
               <a
                 href="tel:+919149406965"
-                className="block text-center border border-white/20 text-white py-2 rounded-full text-sm"
+                className="flex items-center justify-center gap-2 border border-white/20 text-white py-3 rounded-xl text-sm font-semibold hover:bg-white/5 transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
-                Call: +91 91494 06965
+                📞 +91 91494 06965
+              </a>
+              <a
+                href="https://wa.me/919149406965"
+                className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl text-sm font-semibold transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                💬 WhatsApp Us
               </a>
             </div>
           </div>

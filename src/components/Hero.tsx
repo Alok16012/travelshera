@@ -57,7 +57,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-black/65" />
 
       {/* Slide dots */}
-      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+      <div className="absolute bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 flex gap-2 z-10">
         {heroSlides.map((_, i) => (
           <button
             key={i}
@@ -70,7 +70,7 @@ export default function Hero() {
       </div>
 
       {/* Location label */}
-      <div className="absolute top-20 right-5 sm:right-10 z-10">
+      <div className="absolute top-20 right-4 sm:right-10 z-10">
         <span className="bg-black/40 backdrop-blur-sm text-white/80 text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5">
           <MapPin className="w-3 h-3 text-orange-400" />
           {heroSlides[activeSlide].label}
@@ -80,25 +80,25 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 w-full max-w-4xl mx-auto">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/40 text-orange-400 rounded-full px-4 py-1.5 text-sm font-medium mb-6 backdrop-blur-sm">
-          <span className="w-2 h-2 bg-orange-400 rounded-full animate-pulse" />
+        <div className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/40 text-orange-400 rounded-full px-3 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm font-medium mb-4 sm:mb-6 backdrop-blur-sm">
+          <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-orange-400 rounded-full animate-pulse" />
           Kashmir&#39;s Trusted Travel Company
         </div>
 
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-3 sm:mb-4">
           Let&#39;s Explore Kashmir{" "}
           <span className="text-orange-400">Like Never Before.</span>
         </h1>
 
-        <p className="text-gray-300 text-lg sm:text-xl mb-10 max-w-2xl mx-auto">
-          Packages to match every budget. Customized tours for every traveller — from snow-capped Gulmarg to serene Dal Lake.
+        <p className="text-gray-300 text-sm sm:text-xl mb-6 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
+          Packages to match every budget. Customized tours — from snow-capped Gulmarg to serene Dal Lake.
         </p>
 
         {/* Search Bar */}
-        <div className="bg-white rounded-2xl shadow-2xl p-3 flex flex-col sm:flex-row gap-3 max-w-3xl mx-auto">
+        <div className="bg-white rounded-2xl shadow-2xl p-2.5 sm:p-3 flex flex-col sm:flex-row gap-2 sm:gap-3 max-w-3xl mx-auto">
           {/* Destination */}
-          <div className="flex-1 flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3">
-            <MapPin className="w-5 h-5 text-orange-500 shrink-0" />
+          <div className="flex-1 flex items-center gap-3 bg-gray-50 rounded-xl px-3 sm:px-4 py-2.5 sm:py-3">
+            <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500 shrink-0" />
             <div className="flex-1 text-left">
               <p className="text-xs text-gray-400 font-medium">Destination</p>
               <select
@@ -118,8 +118,8 @@ export default function Hero() {
           <div className="hidden sm:block w-px bg-gray-200" />
 
           {/* Month */}
-          <div className="flex-1 flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3">
-            <Calendar className="w-5 h-5 text-orange-500 shrink-0" />
+          <div className="flex-1 flex items-center gap-3 bg-gray-50 rounded-xl px-3 sm:px-4 py-2.5 sm:py-3">
+            <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500 shrink-0" />
             <div className="flex-1 text-left">
               <p className="text-xs text-gray-400 font-medium">Month</p>
               <select
@@ -138,31 +138,31 @@ export default function Hero() {
           {/* Search Button */}
           <Link
             href="/trips"
-            className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3 rounded-xl flex items-center justify-center gap-2 transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/30 sm:min-w-[140px]"
+            className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 sm:px-8 py-3 rounded-xl flex items-center justify-center gap-2 transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/30 sm:min-w-[140px]"
           >
-            <Search className="w-5 h-5" />
+            <Search className="w-4 h-4 sm:w-5 sm:h-5" />
             Search Tours
           </Link>
         </div>
 
         {/* Stats */}
-        <div className="mt-12 flex flex-wrap justify-center gap-8 sm:gap-16">
+        <div className="mt-8 sm:mt-12 grid grid-cols-4 gap-2 sm:flex sm:flex-wrap sm:justify-center sm:gap-16 max-w-xs sm:max-w-none mx-auto">
           {[
             { value: "5,000+", label: "Happy Travellers" },
-            { value: "500+", label: "Tours Completed" },
+            { value: "500+", label: "Tours Done" },
             { value: "30+", label: "Destinations" },
-            { value: "10+", label: "Years Experience" },
+            { value: "10+", label: "Years Exp." },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <p className="text-2xl sm:text-3xl font-bold text-white">{stat.value}</p>
-              <p className="text-gray-400 text-sm mt-1">{stat.label}</p>
+              <p className="text-xl sm:text-3xl font-bold text-white">{stat.value}</p>
+              <p className="text-gray-400 text-[10px] sm:text-sm mt-0.5 sm:mt-1">{stat.label}</p>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/50">
+      {/* Scroll Indicator - hidden on mobile */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-1 text-white/50">
         <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
           <div className="w-1 h-2.5 bg-white/50 rounded-full animate-bounce" />
         </div>
