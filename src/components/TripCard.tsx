@@ -76,21 +76,23 @@ export default function TripCard({ trip }: { trip: TripDetail }) {
         </div>
 
         {/* Price + CTA */}
-        <div className="flex items-center justify-between pt-2.5 border-t border-gray-100">
-          <div>
-            <div className="flex items-baseline gap-1">
-              <span className="text-orange-500 font-bold text-base sm:text-lg">
-                ₹{trip.price.toLocaleString("en-IN")}
-              </span>
-              <span className="text-gray-400 text-[10px]">/person</span>
+        <div className="pt-2.5 border-t border-gray-100">
+          <div className="flex items-center justify-between mb-2">
+            <div>
+              <div className="flex items-baseline gap-1">
+                <span className="text-orange-500 font-bold text-sm sm:text-lg">
+                  ₹{trip.price.toLocaleString("en-IN")}
+                </span>
+                <span className="text-gray-400 text-[9px] sm:text-[10px]">/person</span>
+              </div>
+              {trip.originalPrice && (
+                <span className="text-gray-400 text-[9px] sm:text-[10px] line-through">
+                  ₹{trip.originalPrice.toLocaleString("en-IN")}
+                </span>
+              )}
             </div>
-            {trip.originalPrice && (
-              <span className="text-gray-400 text-[10px] line-through">
-                ₹{trip.originalPrice.toLocaleString("en-IN")}
-              </span>
-            )}
           </div>
-          <span className="bg-orange-500 group-hover:bg-orange-600 text-white text-xs font-semibold px-3 sm:px-4 py-2 rounded-xl transition-all duration-200">
+          <span className="block w-full text-center bg-orange-500 group-hover:bg-orange-600 text-white text-xs font-semibold py-2 rounded-xl transition-all duration-200">
             Know More →
           </span>
         </div>
