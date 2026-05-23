@@ -88,7 +88,11 @@ export default function Footer() {
               </a>
               <div className="flex items-start gap-2.5 text-sm">
                 <MapPin className="w-4 h-4 text-orange-500 mt-0.5 shrink-0" />
-                <span>Beerwah Budgam, Srinagar, J&K – 193411</span>
+                <span>Radio Colony Lawaypora, Srinagar, J&K – 190017</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-sm">
+                <span className="text-orange-500 font-bold text-xs">GST</span>
+                <span>01KODPS7232P1ZE</span>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -170,7 +174,7 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-          <p>© 2024 Shera Travels. All rights reserved. Made with ❤️ for Travellers</p>
+          <p>© 2024 Shera Travels. All rights reserved. GST: 01KODPS7232P1ZE</p>
           <div className="flex items-center gap-4">
             <Link href="#" className="hover:text-orange-400 transition-colors">Privacy Policy</Link>
             <Link href="#" className="hover:text-orange-400 transition-colors">Terms</Link>

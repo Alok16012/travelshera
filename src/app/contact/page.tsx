@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle, MessageCircle, FileText } from "lucide-react";
 
 const faqs = [
   { q: "How do I book a tour with Shera Travels?", a: "Click 'Know More' on any tour package, fill the enquiry form, and our team will call you within a few hours to confirm your booking and discuss customization options." },
@@ -139,7 +139,8 @@ export default function ContactPage() {
                   { icon: Phone, label: "Phone 1", value: "+91 91494 06965", href: "tel:+919149406965" },
                   { icon: Phone, label: "Phone 2", value: "+91 98589 66518", href: "tel:+919858966518" },
                   { icon: Mail, label: "Email", value: "info@sheratravels.com", href: "mailto:info@sheratravels.com" },
-                  { icon: MapPin, label: "Office", value: "Beerwah Budgam, Srinagar\nJammu & Kashmir – 193411", href: "#" },
+                  { icon: MapPin, label: "Office", value: "Radio Colony Lawaypora, Srinagar\nJammu & Kashmir – 190017", href: "#" },
+                  { icon: FileText, label: "GST No.", value: "01KODPS7232P1ZE", href: "#" },
                   { icon: Clock, label: "Hours", value: "Mon–Sat: 9 AM – 8 PM\nSun: 10 AM – 6 PM", href: "#" },
                 ].map((item) => (
                   <a key={item.label} href={item.href}
@@ -171,8 +172,8 @@ export default function ContactPage() {
               <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
                 <div className="text-center">
                   <MapPin className="w-10 h-10 text-orange-500 mx-auto mb-2" />
-                  <p className="text-gray-600 font-semibold">Beerwah Budgam</p>
-                  <p className="text-gray-400 text-sm">Srinagar, J&K</p>
+                  <p className="text-gray-600 font-semibold">Radio Colony Lawaypora</p>
+                  <p className="text-gray-400 text-sm">Srinagar, J&K – 190017</p>
                 </div>
               </div>
             </div>

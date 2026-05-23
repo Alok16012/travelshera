@@ -9,6 +9,11 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Shera Travels – Kashmir's Trusted Travel Company",
   description: "Book Kashmir tours, Ladakh packages, honeymoon trips, and pilgrimage tours. Expert travel services with 10+ years experience.",
+  icons: {
+    icon: "/sheralogo.png",
+    shortcut: "/sheralogo.png",
+    apple: "/sheralogo.png",
+  },
 };
 
 export default function RootLayout({
