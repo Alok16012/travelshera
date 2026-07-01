@@ -10,6 +10,7 @@ import {
 import { trips } from "@/data/trips";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { submitLead } from "@/lib/leads";
 
 const difficultyColor: Record<string, string> = {
   Easy: "bg-green-100 text-green-700 border-green-200",
@@ -28,6 +29,8 @@ export default function TripDetailPage() {
   const [activeTab, setActiveTab] = useState("overview");
   const [bookingForm, setBookingForm] = useState({ name: "", phone: "", email: "", people: "1" });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [bookingError, setBookingError] = useState("");
 
   if (!trip) {
     return (
@@ -358,7 +361,29 @@ export default function TripDetailPage() {
                     </div>
                   ) : (
                     <form
-                      onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
+                      onSubmit={async (e) => {
+                        e.preventDefault();
+                        setBookingError("");
+                        setSubmitting(true);
+                        try {
+                          await submitLead({
+                            name: bookingForm.name,
+                            phone: bookingForm.phone,
+                            email: bookingForm.email,
+                            destination: `${trip.title} (${trip.location})`,
+                            adults: Number(bookingForm.people),
+                            notes: `Batch date: ${selectedDate} | Est. total: ₹${(trip.price * Number(bookingForm.people)).toLocaleString("en-IN")}`,
+                            source: "Website",
+                          });
+                          setSubmitted(true);
+                        } catch (err) {
+                          setBookingError(
+                            err instanceof Error ? err.message : "Something went wrong. Please call or WhatsApp us instead."
+                          );
+                        } finally {
+                          setSubmitting(false);
+                        }
+                      }}
                       className="space-y-3"
                     >
                       <input
@@ -403,11 +428,18 @@ export default function TripDetailPage() {
                         </div>
                       </div>
 
+                      {bookingError && (
+                        <div className="flex items-center gap-2 text-red-600 text-xs bg-red-50 border border-red-100 rounded-xl px-3 py-2.5">
+                          <AlertCircle className="w-4 h-4 shrink-0" /> {bookingError}
+                        </div>
+                      )}
+
                       <button
                         type="submit"
-                        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 rounded-xl transition-all hover:shadow-lg hover:shadow-orange-300/40 text-base"
+                        disabled={submitting}
+                        className="w-full bg-orange-500 hover:bg-orange-600 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-3.5 rounded-xl transition-all hover:shadow-lg hover:shadow-orange-300/40 text-base"
                       >
-                        Book Now – ₹{(trip.price * Number(bookingForm.people)).toLocaleString("en-IN")}
+                        {submitting ? "Sending..." : `Book Now – ₹${(trip.price * Number(bookingForm.people)).toLocaleString("en-IN")}`}
                       </button>
                     </form>
                   )}

@@ -2,7 +2,8 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle, MessageCircle, FileText } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle, MessageCircle, FileText, AlertCircle } from "lucide-react";
+import { submitLead } from "@/lib/leads";
 
 const faqs = [
   { q: "How do I book a tour with Shera Travels?", a: "Click 'Know More' on any tour package, fill the enquiry form, and our team will call you within a few hours to confirm your booking and discuss customization options." },
@@ -15,11 +16,31 @@ const faqs = [
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError("");
+    setSubmitting(true);
+    try {
+      await submitLead({
+        name: form.name,
+        phone: form.phone,
+        email: form.email,
+        destination: form.subject,
+        notes: form.message,
+        source: "Website",
+      });
+      setSubmitted(true);
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "Something went wrong. Please try again or WhatsApp us."
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -100,9 +121,14 @@ export default function ContactPage() {
                         value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })}
                         className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition resize-none" />
                     </div>
-                    <button type="submit"
-                      className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition hover:shadow-lg hover:shadow-orange-200">
-                      <Send className="w-5 h-5" /> Send Message
+                    {error && (
+                      <div className="flex items-center gap-2 text-red-600 text-sm bg-red-50 border border-red-100 rounded-xl px-4 py-3">
+                        <AlertCircle className="w-4 h-4 shrink-0" /> {error}
+                      </div>
+                    )}
+                    <button type="submit" disabled={submitting}
+                      className="w-full bg-orange-500 hover:bg-orange-600 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition hover:shadow-lg hover:shadow-orange-200">
+                      <Send className="w-5 h-5" /> {submitting ? "Sending..." : "Send Message"}
                     </button>
                   </form>
                 </>

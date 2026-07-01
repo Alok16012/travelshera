@@ -1,14 +1,33 @@
 "use client";
 import { useState } from "react";
-import { Send, CheckCircle } from "lucide-react";
+import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import { submitLead } from "@/lib/leads";
 
 export default function Newsletter() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) setSubmitted(true);
+    if (!email) return;
+    setError("");
+    setSubmitting(true);
+    try {
+      await submitLead({
+        name: name || email,
+        email,
+        notes: "Newsletter signup",
+        source: "Website",
+      });
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -59,6 +78,8 @@ export default function Newsletter() {
                   <div className="mb-4">
                     <input
                       type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                       placeholder="Your Name"
                       className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-800 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
                     />
@@ -73,12 +94,18 @@ export default function Newsletter() {
                       className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-800 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
                     />
                   </div>
+                  {error && (
+                    <div className="flex items-center gap-2 text-red-600 text-xs bg-red-50 border border-red-100 rounded-xl px-3 py-2 mb-4">
+                      <AlertCircle className="w-4 h-4 shrink-0" /> {error}
+                    </div>
+                  )}
                   <button
                     type="submit"
-                    className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2 transition-all duration-200"
+                    disabled={submitting}
+                    className="w-full bg-orange-500 hover:bg-orange-600 disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-xl flex items-center justify-center gap-2 transition-all duration-200"
                   >
                     <Send className="w-4 h-4" />
-                    Subscribe Now — It&#39;s Free!
+                    {submitting ? "Subscribing..." : "Subscribe Now — It's Free!"}
                   </button>
                   <p className="text-gray-400 text-xs text-center mt-3">
                     No spam. Unsubscribe anytime. We respect your privacy.
