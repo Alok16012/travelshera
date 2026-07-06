@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import ServiceEnquiryForm from "@/components/ServiceEnquiryForm";
 import { Car, CheckCircle, Phone, MessageCircle, ArrowLeft, MapPin, Users, Shield, Star } from "lucide-react";
 
 const vehicleTypes = [
@@ -176,6 +177,7 @@ export default function CabServicesPage() {
           {/* RIGHT SIDEBAR */}
           <div className="lg:w-80 shrink-0">
             <div className="sticky top-20 space-y-4">
+              <ServiceEnquiryForm service="Cab Services" />
               <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-2xl p-6 text-white">
                 <Car className="w-8 h-8 text-green-200 mb-3" />
                 <h3 className="font-bold text-xl mb-2">Book a Cab</h3>

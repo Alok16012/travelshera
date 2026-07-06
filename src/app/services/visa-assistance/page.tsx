@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import ServiceEnquiryForm from "@/components/ServiceEnquiryForm";
 import { FileText, CheckCircle, Phone, MessageCircle, ArrowLeft, Globe, Clock, Shield, Users } from "lucide-react";
 
 const visaTypes = [
@@ -228,6 +229,7 @@ export default function VisaAssistancePage() {
           {/* RIGHT SIDEBAR */}
           <div className="lg:w-80 shrink-0">
             <div className="sticky top-20 space-y-4">
+              <ServiceEnquiryForm service="Visa Assistance" />
               <div className="bg-gradient-to-br from-purple-600 to-purple-700 rounded-2xl p-6 text-white">
                 <FileText className="w-8 h-8 text-purple-200 mb-3" />
                 <h3 className="font-bold text-xl mb-2">Start Visa Process</h3>

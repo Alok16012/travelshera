@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import ServiceEnquiryForm from "@/components/ServiceEnquiryForm";
 import { Plane, CheckCircle, Phone, MessageCircle, ArrowLeft, Clock, Tag, Shield, Headphones } from "lucide-react";
 
 const popularRoutes = [
@@ -160,6 +161,7 @@ export default function AirTicketingPage() {
           {/* RIGHT SIDEBAR */}
           <div className="lg:w-80 shrink-0">
             <div className="sticky top-20 space-y-4">
+              <ServiceEnquiryForm service="Air Ticketing" />
               {/* Book Now Card */}
               <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-6 text-white">
                 <Plane className="w-8 h-8 text-blue-200 mb-3" />

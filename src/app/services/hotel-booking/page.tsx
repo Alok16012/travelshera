@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import ServiceEnquiryForm from "@/components/ServiceEnquiryForm";
 import { Hotel, CheckCircle, Phone, MessageCircle, ArrowLeft, Star, Shield, Tag, Clock } from "lucide-react";
 
 const propertyTypes = [
@@ -176,6 +177,7 @@ export default function HotelBookingPage() {
           {/* RIGHT SIDEBAR */}
           <div className="lg:w-80 shrink-0">
             <div className="sticky top-20 space-y-4">
+              <ServiceEnquiryForm service="Hotel Booking" />
               <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl p-6 text-white">
                 <Hotel className="w-8 h-8 text-orange-200 mb-3" />
                 <h3 className="font-bold text-xl mb-2">Book a Hotel</h3>
