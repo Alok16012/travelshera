@@ -103,14 +103,6 @@ export default function Footer() {
               Kashmir&apos;s trusted travel company with over a decade of experience. We craft unforgettable journeys across Kashmir, Ladakh, and beyond.
             </p>
             <div className="space-y-2.5 mb-6">
-              <a href="tel:+919149406965" className="flex items-center gap-2.5 text-sm hover:text-orange-400 transition-colors">
-                <Phone className="w-4 h-4 text-orange-500" />
-                +91 91494 06965
-              </a>
-              <a href="tel:+919858966518" className="flex items-center gap-2.5 text-sm hover:text-orange-400 transition-colors">
-                <Phone className="w-4 h-4 text-orange-500" />
-                +91 98589 66518
-              </a>
               <a href="tel:+917006233802" className="flex items-center gap-2.5 text-sm hover:text-orange-400 transition-colors">
                 <Phone className="w-4 h-4 text-orange-500" />
                 +91 70062 33802

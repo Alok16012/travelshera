@@ -167,11 +167,11 @@ export default function AirTicketingPage() {
                 <Plane className="w-8 h-8 text-blue-200 mb-3" />
                 <h3 className="font-bold text-xl mb-2">Book Your Flight</h3>
                 <p className="text-blue-100 text-sm mb-5">Share your travel details and get the best available fares instantly.</p>
-                <a href="tel:+919149406965"
+                <a href="tel:+917006233802"
                   className="flex items-center justify-center gap-2 bg-white text-blue-700 font-bold py-3 rounded-xl hover:shadow-lg transition text-sm mb-3">
-                  <Phone className="w-4 h-4" /> Call: +91 91494 06965
+                  <Phone className="w-4 h-4" /> Call: +91 70062 33802
                 </a>
-                <a href="https://wa.me/919149406965?text=Hi%2C%20I%20need%20help%20with%20flight%20booking" target="_blank"
+                <a href="https://wa.me/917006233802?text=Hi%2C%20I%20need%20help%20with%20flight%20booking" target="_blank"
                   className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-xl transition text-sm">
                   <MessageCircle className="w-4 h-4" /> WhatsApp Us
                 </a>

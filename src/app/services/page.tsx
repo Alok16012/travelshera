@@ -122,11 +122,11 @@ export default function ServicesPage() {
             <p className="text-gray-400">Combine any of our services into one seamless, personalized travel experience.</p>
           </div>
           <div className="flex gap-3 shrink-0">
-            <a href="tel:+919149406965"
+            <a href="tel:+917006233802"
               className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-xl font-semibold text-sm transition">
               <Phone className="w-4 h-4" /> Call Us
             </a>
-            <a href="https://wa.me/919149406965" target="_blank"
+            <a href="https://wa.me/917006233802" target="_blank"
               className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl font-semibold text-sm transition">
               <MessageCircle className="w-4 h-4" /> WhatsApp
             </a>

@@ -101,10 +101,10 @@ export default function Navbar() {
           {/* Right Buttons */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="tel:+919149406965"
+              href="tel:+917006233802"
               className="text-gray-300 hover:text-white text-sm font-medium px-3 py-2 transition-colors"
             >
-              +91 91494 06965
+              +91 70062 33802
             </a>
             <Link
               href="/trips"
@@ -162,14 +162,14 @@ export default function Navbar() {
                 🏔️ Explore Tours
               </Link>
               <a
-                href="tel:+919149406965"
+                href="tel:+917006233802"
                 className="flex items-center justify-center gap-2 border border-white/20 text-white py-3 rounded-xl text-sm font-semibold hover:bg-white/5 transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
-                📞 +91 91494 06965
+                📞 +91 70062 33802
               </a>
               <a
-                href="https://wa.me/919149406965"
+                href="https://wa.me/917006233802"
                 className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl text-sm font-semibold transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
