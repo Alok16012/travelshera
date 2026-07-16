@@ -42,7 +42,7 @@ const footerLinks = {
 const socialLinks = [
   {
     label: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/sheraatravels",
     color: "hover:text-pink-400",
     svg: (
       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -52,7 +52,7 @@ const socialLinks = [
   },
   {
     label: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com/sheratravelssxr",
     color: "hover:text-blue-400",
     svg: (
       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -72,7 +72,7 @@ const socialLinks = [
   },
   {
     label: "YouTube",
-    href: "#",
+    href: "https://www.youtube.com/@Sheratravels",
     color: "hover:text-red-400",
     svg: (
       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -104,6 +104,10 @@ export default function Footer() {
               Kashmir&apos;s trusted travel company with over a decade of experience. We craft unforgettable journeys across Kashmir, Ladakh, and beyond.
             </p>
             <div className="space-y-2.5 mb-6">
+              <a href="tel:+919149406965" className="flex items-center gap-2.5 text-sm hover:text-orange-400 transition-colors">
+                <Phone className="w-4 h-4 text-orange-500" />
+                +91 91494 06965
+              </a>
               <a href="tel:+917006233802" className="flex items-center gap-2.5 text-sm hover:text-orange-400 transition-colors">
                 <Phone className="w-4 h-4 text-orange-500" />
                 +91 70062 33802
@@ -111,10 +115,6 @@ export default function Footer() {
               <a href="tel:+916006473737" className="flex items-center gap-2.5 text-sm hover:text-orange-400 transition-colors">
                 <Phone className="w-4 h-4 text-orange-500" />
                 +91 60064 73737
-              </a>
-              <a href="tel:+919149406965" className="flex items-center gap-2.5 text-sm hover:text-orange-400 transition-colors">
-                <Phone className="w-4 h-4 text-orange-500" />
-                +91 91494 06965
               </a>
               <a href="mailto:info@sheratravels.com" className="flex items-center gap-2.5 text-sm hover:text-orange-400 transition-colors">
                 <Mail className="w-4 h-4 text-orange-500" />
@@ -135,6 +135,8 @@ export default function Footer() {
                   key={s.label}
                   href={s.href}
                   aria-label={s.label}
+                  target={s.href.startsWith("http") ? "_blank" : undefined}
+                  rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className={`w-9 h-9 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-gray-400 transition-all duration-200 hover:border-white/30 ${s.color}`}
                 >
                   {s.svg}

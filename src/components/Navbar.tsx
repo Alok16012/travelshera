@@ -102,10 +102,10 @@ export default function Navbar() {
           {/* Right Buttons */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="tel:+917006233802"
+              href="tel:+919149406965"
               className="text-gray-300 hover:text-white text-sm font-medium px-3 py-2 transition-colors"
             >
-              +91 70062 33802
+              +91 91494 06965
             </a>
             <Link
               href="/trips"
@@ -163,19 +163,19 @@ export default function Navbar() {
                 🏔️ Explore Tours
               </Link>
               <a
-                href="tel:+917006233802"
+                href="tel:+919149406965"
                 className="flex items-center justify-center gap-2 border border-white/20 text-white py-3 rounded-xl text-sm font-semibold hover:bg-white/5 transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
-                📞 +91 70062 33802
+                📞 +91 91494 06965
               </a>
               <div className="flex items-center justify-center gap-x-3 gap-y-1 flex-wrap text-gray-300 text-sm font-semibold">
-                <a href="tel:+916006473737" className="hover:text-orange-400 transition-colors" onClick={() => setMenuOpen(false)}>+91 60064 73737</a>
+                <a href="tel:+917006233802" className="hover:text-orange-400 transition-colors" onClick={() => setMenuOpen(false)}>+91 70062 33802</a>
                 <span className="text-white/20">·</span>
-                <a href="tel:+919149406965" className="hover:text-orange-400 transition-colors" onClick={() => setMenuOpen(false)}>+91 91494 06965</a>
+                <a href="tel:+916006473737" className="hover:text-orange-400 transition-colors" onClick={() => setMenuOpen(false)}>+91 60064 73737</a>
               </div>
               <a
-                href="https://wa.me/917006233802"
+                href="https://wa.me/919149406965"
                 className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl text-sm font-semibold transition-colors"
                 onClick={() => setMenuOpen(false)}
               >

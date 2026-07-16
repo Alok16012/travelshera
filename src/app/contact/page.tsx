@@ -162,9 +162,9 @@ export default function ContactPage() {
               <h3 className="font-bold text-gray-900 text-lg mb-5">Contact Information</h3>
               <div className="space-y-4">
                 {[
-                  { icon: Phone, label: "Phone 1", value: "+91 70062 33802", href: "tel:+917006233802" },
-                  { icon: Phone, label: "Phone 2", value: "+91 60064 73737", href: "tel:+916006473737" },
-                  { icon: Phone, label: "Phone 3", value: "+91 91494 06965", href: "tel:+919149406965" },
+                  { icon: Phone, label: "Phone 1", value: "+91 91494 06965", href: "tel:+919149406965" },
+                  { icon: Phone, label: "Phone 2", value: "+91 70062 33802", href: "tel:+917006233802" },
+                  { icon: Phone, label: "Phone 3", value: "+91 60064 73737", href: "tel:+916006473737" },
                   { icon: Mail, label: "Email", value: "info@sheratravels.com", href: "mailto:info@sheratravels.com" },
                   { icon: MapPin, label: "Office", value: "Radio Colony Lawaypora, Srinagar\nJammu & Kashmir – 190017", href: "#" },
                   { icon: FileText, label: "GST No.", value: "01KODPS7232P1ZE", href: "#" },
@@ -185,7 +185,7 @@ export default function ContactPage() {
             </div>
 
             {/* WhatsApp CTA */}
-            <a href="https://wa.me/917006233802" target="_blank"
+            <a href="https://wa.me/919149406965" target="_blank"
               className="flex items-center gap-4 bg-green-500 hover:bg-green-600 text-white rounded-2xl p-5 transition group">
               <MessageCircle className="w-10 h-10 shrink-0" />
               <div>

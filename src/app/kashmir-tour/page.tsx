@@ -84,8 +84,8 @@ const inclusions = [
   "Private Cab (Sightseeing)", "Gulmarg Gondola Assistance", "24×7 On-Trip Support",
 ];
 
-const WA = "https://wa.me/917006233802?text=Hi%2C%20I%27m%20interested%20in%20a%20Kashmir%20tour%20package";
-const CALL = "tel:+917006233802";
+const WA = "https://wa.me/919149406965?text=Hi%2C%20I%27m%20interested%20in%20a%20Kashmir%20tour%20package";
+const CALL = "tel:+919149406965";
 
 export default function KashmirTourLanding() {
   return (
@@ -101,7 +101,7 @@ export default function KashmirTourLanding() {
           <Image src="/sheralogo.png" alt="Shera Travels" width={130} height={44} className="h-9 w-auto object-contain" priority />
         </div>
         <a href={CALL} className="flex items-center gap-2 text-sm font-bold text-gray-900 hover:text-orange-500 transition">
-          <Phone className="w-4 h-4 text-orange-500" /> +91 70062 33802
+          <Phone className="w-4 h-4 text-orange-500" /> +91 91494 06965
         </a>
       </header>
 
@@ -279,7 +279,7 @@ export default function KashmirTourLanding() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a href={CALL} className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white text-orange-600 font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition">
-              <Phone className="w-5 h-5" /> Call +91 70062 33802
+              <Phone className="w-5 h-5" /> Call +91 91494 06965
             </a>
             <a href={WA} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold px-8 py-4 rounded-xl transition">
               <MessageCircle className="w-5 h-5" /> WhatsApp Us
@@ -291,7 +291,7 @@ export default function KashmirTourLanding() {
       {/* Footer mini */}
       <footer className="bg-[#0a0f1e] text-gray-400 text-center py-6 px-4 text-xs">
         <p>© 2024 Shera Travels · Radio Colony Lawaypora, Srinagar, J&amp;K – 190017 · GST: 01KODPS7232P1ZE</p>
-        <p className="mt-1">+91 70062 33802 · +91 60064 73737 · +91 91494 06965 · info@sheratravels.com</p>
+        <p className="mt-1">+91 91494 06965 · +91 70062 33802 · +91 60064 73737 · info@sheratravels.com</p>
       </footer>
 
       {/* Sticky mobile CTA */}

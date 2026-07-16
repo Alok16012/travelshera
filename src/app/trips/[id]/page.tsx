@@ -447,13 +447,13 @@ export default function TripDetailPage() {
                   {/* Contact Options */}
                   <div className="flex gap-3 pt-1">
                     <a
-                      href="tel:+919999999999"
+                      href="tel:+919149406965"
                       className="flex-1 flex items-center justify-center gap-2 border border-gray-200 rounded-xl py-2.5 text-sm font-medium text-gray-700 hover:border-orange-300 hover:text-orange-500 transition"
                     >
                       <Phone className="w-4 h-4" /> Call Us
                     </a>
                     <a
-                      href="https://wa.me/919999999999"
+                      href="https://wa.me/919149406965"
                       target="_blank"
                       className="flex-1 flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white rounded-xl py-2.5 text-sm font-medium transition"
                     >

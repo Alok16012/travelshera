@@ -123,21 +123,21 @@ export default function ServicesPage() {
           </div>
           <div className="shrink-0">
             <div className="flex gap-3">
-              <a href="tel:+917006233802"
+              <a href="tel:+919149406965"
                 className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-xl font-semibold text-sm transition">
                 <Phone className="w-4 h-4" /> Call Us
               </a>
-              <a href="https://wa.me/917006233802" target="_blank"
+              <a href="https://wa.me/919149406965" target="_blank"
                 className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl font-semibold text-sm transition">
                 <MessageCircle className="w-4 h-4" /> WhatsApp
               </a>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 mt-4 text-sm text-gray-300 font-semibold">
+              <a href="tel:+919149406965" className="hover:text-orange-400 transition-colors">+91 91494 06965</a>
+              <span className="text-gray-600">·</span>
               <a href="tel:+917006233802" className="hover:text-orange-400 transition-colors">+91 70062 33802</a>
               <span className="text-gray-600">·</span>
               <a href="tel:+916006473737" className="hover:text-orange-400 transition-colors">+91 60064 73737</a>
-              <span className="text-gray-600">·</span>
-              <a href="tel:+919149406965" className="hover:text-orange-400 transition-colors">+91 91494 06965</a>
             </div>
           </div>
         </div>

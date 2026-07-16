@@ -234,19 +234,19 @@ export default function VisaAssistancePage() {
                 <FileText className="w-8 h-8 text-purple-200 mb-3" />
                 <h3 className="font-bold text-xl mb-2">Start Visa Process</h3>
                 <p className="text-purple-100 text-sm mb-5">Share your destination and travel dates. We&apos;ll guide you through the entire visa process.</p>
-                <a href="tel:+917006233802"
+                <a href="tel:+919149406965"
                   className="flex items-center justify-center gap-2 bg-white text-purple-700 font-bold py-3 rounded-xl hover:shadow-lg transition text-sm mb-3">
-                  <Phone className="w-4 h-4" /> Call: +91 70062 33802
+                  <Phone className="w-4 h-4" /> Call: +91 91494 06965
                 </a>
-                <a href="https://wa.me/917006233802?text=Hi%2C%20I%20need%20visa%20assistance" target="_blank"
+                <a href="https://wa.me/919149406965?text=Hi%2C%20I%20need%20visa%20assistance" target="_blank"
                   className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-xl transition text-sm">
                   <MessageCircle className="w-4 h-4" /> WhatsApp Us
                 </a>
                 <div className="mt-4 pt-4 border-t border-white/20 text-center">
                   <p className="text-white/70 text-xs mb-2 font-semibold uppercase tracking-wide">More Numbers</p>
                   <div className="flex flex-col gap-1.5 text-sm font-semibold">
+                    <a href="tel:+917006233802" className="hover:underline">+91 70062 33802</a>
                     <a href="tel:+916006473737" className="hover:underline">+91 60064 73737</a>
-                    <a href="tel:+919149406965" className="hover:underline">+91 91494 06965</a>
                   </div>
                 </div>
               </div>

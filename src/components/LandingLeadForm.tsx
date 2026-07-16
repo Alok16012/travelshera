@@ -50,7 +50,7 @@ export default function LandingLeadForm({ compact = false }: { compact?: boolean
           Our Kashmir expert will call you within <span className="font-semibold text-gray-900">15 minutes</span> with your custom quote &amp; best price.
         </p>
         <a
-          href="https://wa.me/917006233802?text=Hi%2C%20I%20just%20enquired%20about%20a%20Kashmir%20tour%20package"
+          href="https://wa.me/919149406965?text=Hi%2C%20I%20just%20enquired%20about%20a%20Kashmir%20tour%20package"
           target="_blank" rel="noopener noreferrer"
           className="inline-flex items-center justify-center gap-2 w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3.5 rounded-xl transition-all"
         >
