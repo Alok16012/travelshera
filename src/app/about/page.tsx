@@ -145,7 +145,7 @@ export default async function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {team.members.map((member) => (
               <div key={member.name} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 text-center hover:shadow-md transition">
-                <img src={member.image} alt={member.name} className="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-3 border-orange-100" />
+                <img src={member.image} alt={member.name} className="w-36 h-36 sm:w-40 sm:h-40 rounded-full object-cover mx-auto mb-5 border-4 border-orange-100 shadow-md" />
                 <h3 className="font-bold text-gray-900 text-lg">{member.name}</h3>
                 <p className="text-orange-500 text-sm font-semibold mb-2">{member.role}</p>
                 <p className="text-gray-500 text-sm">{member.bio}</p>
