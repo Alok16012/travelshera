@@ -38,6 +38,7 @@ const navLinks = [
       { label: "Visa Assistance", href: "/services/visa-assistance" },
     ],
   },
+  { label: "Kashmir Offer", href: "/kashmir-tour" },
   { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },

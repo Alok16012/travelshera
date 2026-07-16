@@ -22,6 +22,7 @@ const footerLinks = {
     { label: "Srinagar", href: "/destinations/kashmir" },
   ],
   trips: [
+    { label: "Kashmir Special Offer", href: "/kashmir-tour" },
     { label: "Kashmir Tours", href: "/trips?category=Kashmir" },
     { label: "Pilgrimage Packages", href: "/trips?category=Pilgrimage" },
     { label: "Honeymoon Packages", href: "/trips?category=Honeymoon" },
