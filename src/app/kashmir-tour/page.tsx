@@ -291,7 +291,7 @@ export default function KashmirTourLanding() {
       {/* Footer mini */}
       <footer className="bg-[#0a0f1e] text-gray-400 text-center py-6 px-4 text-xs">
         <p>© 2024 Shera Travels · Radio Colony Lawaypora, Srinagar, J&amp;K – 190017 · GST: 01KODPS7232P1ZE</p>
-        <p className="mt-1">+91 70062 33802 · +91 60064 73737 · info@sheratravels.com</p>
+        <p className="mt-1">+91 70062 33802 · +91 60064 73737 · +91 91494 06965 · info@sheratravels.com</p>
       </footer>
 
       {/* Sticky mobile CTA */}

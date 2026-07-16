@@ -112,6 +112,10 @@ export default function Footer() {
                 <Phone className="w-4 h-4 text-orange-500" />
                 +91 60064 73737
               </a>
+              <a href="tel:+919149406965" className="flex items-center gap-2.5 text-sm hover:text-orange-400 transition-colors">
+                <Phone className="w-4 h-4 text-orange-500" />
+                +91 91494 06965
+              </a>
               <a href="mailto:info@sheratravels.com" className="flex items-center gap-2.5 text-sm hover:text-orange-400 transition-colors">
                 <Mail className="w-4 h-4 text-orange-500" />
                 info@sheratravels.com
