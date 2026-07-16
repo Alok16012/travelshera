@@ -127,7 +127,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-[#0f172a] border-t border-white/10 shadow-2xl">
+        <div className="lg:hidden bg-[#0f172a] border-t border-white/10 shadow-2xl max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain">
           <div className="px-4 py-3 space-y-0.5">
             {navLinks.map((link) => (
               <div key={link.label}>
