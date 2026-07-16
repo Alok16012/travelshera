@@ -169,6 +169,11 @@ export default function Navbar() {
               >
                 📞 +91 70062 33802
               </a>
+              <div className="flex items-center justify-center gap-x-3 gap-y-1 flex-wrap text-gray-300 text-sm font-semibold">
+                <a href="tel:+916006473737" className="hover:text-orange-400 transition-colors" onClick={() => setMenuOpen(false)}>+91 60064 73737</a>
+                <span className="text-white/20">·</span>
+                <a href="tel:+919149406965" className="hover:text-orange-400 transition-colors" onClick={() => setMenuOpen(false)}>+91 91494 06965</a>
+              </div>
               <a
                 href="https://wa.me/917006233802"
                 className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl text-sm font-semibold transition-colors"

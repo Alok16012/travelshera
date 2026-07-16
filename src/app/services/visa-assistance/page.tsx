@@ -242,6 +242,13 @@ export default function VisaAssistancePage() {
                   className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-xl transition text-sm">
                   <MessageCircle className="w-4 h-4" /> WhatsApp Us
                 </a>
+                <div className="mt-4 pt-4 border-t border-white/20 text-center">
+                  <p className="text-white/70 text-xs mb-2 font-semibold uppercase tracking-wide">More Numbers</p>
+                  <div className="flex flex-col gap-1.5 text-sm font-semibold">
+                    <a href="tel:+916006473737" className="hover:underline">+91 60064 73737</a>
+                    <a href="tel:+919149406965" className="hover:underline">+91 91494 06965</a>
+                  </div>
+                </div>
               </div>
 
               {/* Document Checklist */}
