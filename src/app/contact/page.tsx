@@ -164,6 +164,8 @@ export default function ContactPage() {
                 {[
                   { icon: Phone, label: "Phone 1", value: "+91 91494 06965", href: "tel:+919149406965" },
                   { icon: Phone, label: "Phone 2", value: "+91 98589 66518", href: "tel:+919858966518" },
+                  { icon: Phone, label: "Phone 3", value: "+91 70062 33802", href: "tel:+917006233802" },
+                  { icon: Phone, label: "Phone 4", value: "+91 60064 73737", href: "tel:+916006473737" },
                   { icon: Mail, label: "Email", value: "info@sheratravels.com", href: "mailto:info@sheratravels.com" },
                   { icon: MapPin, label: "Office", value: "Radio Colony Lawaypora, Srinagar\nJammu & Kashmir – 190017", href: "#" },
                   { icon: FileText, label: "GST No.", value: "01KODPS7232P1ZE", href: "#" },

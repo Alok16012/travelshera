@@ -3,10 +3,39 @@ import Link from "next/link";
 import Image from "next/image";
 
 const footerLinks = {
-  company: ["About Us", "Our Team", "Careers", "Blog", "Press Kit", "Contact Us"],
-  destinations: ["Kashmir Valley", "Gulmarg", "Pahalgam", "Sonmarg", "Leh Ladakh", "Katra", "Manali", "Srinagar"],
-  trips: ["Kashmir Tours", "Pilgrimage Packages", "Honeymoon Packages", "Ladakh Tours", "Winter Packages", "Customized Tours"],
-  support: ["FAQ", "Tour Cancellation Policy", "Refund Policy", "Privacy Policy", "Terms & Conditions"],
+  company: [
+    { label: "About Us", href: "/about" },
+    { label: "Our Team", href: "/about" },
+    { label: "Careers", href: "/contact" },
+    { label: "Blog", href: "/blog" },
+    { label: "Press Kit", href: "/about" },
+    { label: "Contact Us", href: "/contact" },
+  ],
+  destinations: [
+    { label: "Kashmir Valley", href: "/destinations/kashmir" },
+    { label: "Gulmarg", href: "/destinations/gulmarg" },
+    { label: "Pahalgam", href: "/destinations/pahalgam" },
+    { label: "Sonmarg", href: "/destinations/sonmarg" },
+    { label: "Leh Ladakh", href: "/destinations/ladakh" },
+    { label: "Katra", href: "/destinations" },
+    { label: "Manali", href: "/destinations/manali" },
+    { label: "Srinagar", href: "/destinations/kashmir" },
+  ],
+  trips: [
+    { label: "Kashmir Tours", href: "/trips?category=Kashmir" },
+    { label: "Pilgrimage Packages", href: "/trips?category=Pilgrimage" },
+    { label: "Honeymoon Packages", href: "/trips?category=Honeymoon" },
+    { label: "Ladakh Tours", href: "/trips?category=Mountains" },
+    { label: "Winter Packages", href: "/trips" },
+    { label: "Customized Tours", href: "/contact" },
+  ],
+  support: [
+    { label: "FAQ", href: "/contact" },
+    { label: "Tour Cancellation Policy", href: "/contact" },
+    { label: "Refund Policy", href: "/contact" },
+    { label: "Privacy Policy", href: "/contact" },
+    { label: "Terms & Conditions", href: "/contact" },
+  ],
 };
 
 const socialLinks = [
@@ -82,6 +111,14 @@ export default function Footer() {
                 <Phone className="w-4 h-4 text-orange-500" />
                 +91 98589 66518
               </a>
+              <a href="tel:+917006233802" className="flex items-center gap-2.5 text-sm hover:text-orange-400 transition-colors">
+                <Phone className="w-4 h-4 text-orange-500" />
+                +91 70062 33802
+              </a>
+              <a href="tel:+916006473737" className="flex items-center gap-2.5 text-sm hover:text-orange-400 transition-colors">
+                <Phone className="w-4 h-4 text-orange-500" />
+                +91 60064 73737
+              </a>
               <a href="mailto:info@sheratravels.com" className="flex items-center gap-2.5 text-sm hover:text-orange-400 transition-colors">
                 <Mail className="w-4 h-4 text-orange-500" />
                 info@sheratravels.com
@@ -114,10 +151,10 @@ export default function Footer() {
             <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-widest">Company</h4>
             <ul className="space-y-2.5">
               {footerLinks.company.map((link) => (
-                <li key={link}>
-                  <Link href="#" className="text-sm hover:text-orange-400 transition-colors flex items-center gap-1 group">
+                <li key={link.label}>
+                  <Link href={link.href} className="text-sm hover:text-orange-400 transition-colors flex items-center gap-1 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-1 transition-opacity text-orange-500" />
-                    {link}
+                    {link.label}
                   </Link>
                 </li>
               ))}
@@ -129,10 +166,10 @@ export default function Footer() {
             <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-widest">Destinations</h4>
             <ul className="space-y-2.5">
               {footerLinks.destinations.map((link) => (
-                <li key={link}>
-                  <Link href="#" className="text-sm hover:text-orange-400 transition-colors flex items-center gap-1 group">
+                <li key={link.label}>
+                  <Link href={link.href} className="text-sm hover:text-orange-400 transition-colors flex items-center gap-1 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-1 transition-opacity text-orange-500" />
-                    {link}
+                    {link.label}
                   </Link>
                 </li>
               ))}
@@ -144,10 +181,10 @@ export default function Footer() {
             <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-widest">Tours</h4>
             <ul className="space-y-2.5">
               {footerLinks.trips.map((link) => (
-                <li key={link}>
-                  <Link href="#" className="text-sm hover:text-orange-400 transition-colors flex items-center gap-1 group">
+                <li key={link.label}>
+                  <Link href={link.href} className="text-sm hover:text-orange-400 transition-colors flex items-center gap-1 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-1 transition-opacity text-orange-500" />
-                    {link}
+                    {link.label}
                   </Link>
                 </li>
               ))}
@@ -159,10 +196,10 @@ export default function Footer() {
             <h4 className="text-white font-semibold text-sm mb-4 uppercase tracking-widest">Support</h4>
             <ul className="space-y-2.5">
               {footerLinks.support.map((link) => (
-                <li key={link}>
-                  <Link href="#" className="text-sm hover:text-orange-400 transition-colors flex items-center gap-1 group">
+                <li key={link.label}>
+                  <Link href={link.href} className="text-sm hover:text-orange-400 transition-colors flex items-center gap-1 group">
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 -ml-1 transition-opacity text-orange-500" />
-                    {link}
+                    {link.label}
                   </Link>
                 </li>
               ))}
@@ -176,9 +213,9 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
           <p>© 2024 Shera Travels. All rights reserved. GST: 01KODPS7232P1ZE</p>
           <div className="flex items-center gap-4">
-            <Link href="#" className="hover:text-orange-400 transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-orange-400 transition-colors">Terms</Link>
-            <Link href="#" className="hover:text-orange-400 transition-colors">Sitemap</Link>
+            <Link href="/contact" className="hover:text-orange-400 transition-colors">Privacy Policy</Link>
+            <Link href="/contact" className="hover:text-orange-400 transition-colors">Terms</Link>
+            <Link href="/" className="hover:text-orange-400 transition-colors">Sitemap</Link>
           </div>
         </div>
       </div>
