@@ -32,5 +32,10 @@ export async function submitLead(payload: LeadPayload) {
     },
   ]);
 
-  if (error) throw error;
+  // Supabase returns a PostgrestError (a plain object, not an Error instance),
+  // so re-wrap it in a real Error to preserve the message for the UI/logs.
+  if (error) {
+    console.error("submitLead failed:", error);
+    throw new Error(error.message || "Could not submit right now. Please try again.");
+  }
 }
