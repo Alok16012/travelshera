@@ -20,7 +20,7 @@ export default function Newsletter() {
         name: name || email,
         email,
         notes: "Newsletter signup",
-        source: "Website",
+        source: "Newsletter",
       });
       setSubmitted(true);
     } catch (err) {
