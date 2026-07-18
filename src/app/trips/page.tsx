@@ -3,7 +3,7 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TripCard from "@/components/TripCard";
-import { trips } from "@/data/trips";
+import { usePackages } from "@/lib/packages";
 import { Search, SlidersHorizontal } from "lucide-react";
 
 const categories = ["All", "Kashmir", "Mountains", "Pilgrimage", "Honeymoon", "Budget"];
@@ -16,6 +16,7 @@ export default function TripsPage() {
   const [difficulty, setDifficulty] = useState("All");
   const [duration, setDuration] = useState("All");
   const [showFilters, setShowFilters] = useState(false);
+  const { packages: trips } = usePackages();
 
   const filtered = trips.filter((t) => {
     const matchSearch = t.title.toLowerCase().includes(search.toLowerCase()) ||

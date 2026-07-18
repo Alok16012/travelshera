@@ -7,10 +7,10 @@ import {
   CheckCircle, XCircle, ArrowLeft, Calendar, Mountain,
   Phone, MessageCircle, Shield, Award, AlertCircle
 } from "lucide-react";
-import { trips } from "@/data/trips";
+import { usePackages } from "@/lib/packages";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { submitLead } from "@/lib/leads";
+import LandingLeadForm from "@/components/LandingLeadForm";
 
 const difficultyColor: Record<string, string> = {
   Easy: "bg-green-100 text-green-700 border-green-200",
@@ -21,26 +21,28 @@ const difficultyColor: Record<string, string> = {
 export default function TripDetailPage() {
   const params = useParams();
   const id = Number(params.id);
-  const trip = trips.find((t) => t.id === id);
+  const { packages, loading } = usePackages();
+  const trip = packages.find((t) => t.id === id);
 
   const [activeImage, setActiveImage] = useState(0);
   const [openDay, setOpenDay] = useState<number | null>(1);
-  const [selectedDate, setSelectedDate] = useState(trip?.dates[0] || "");
   const [activeTab, setActiveTab] = useState("overview");
-  const [bookingForm, setBookingForm] = useState({ name: "", phone: "", email: "", people: "1" });
-  const [submitted, setSubmitted] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [bookingError, setBookingError] = useState("");
 
   if (!trip) {
     return (
       <main>
         <Navbar />
         <div className="min-h-screen flex flex-col items-center justify-center pt-16">
-          <p className="text-2xl font-bold text-gray-700 mb-4">Trip not found</p>
-          <Link href="/" className="text-orange-500 hover:underline flex items-center gap-2">
-            <ArrowLeft className="w-4 h-4" /> Back to Home
-          </Link>
+          {loading ? (
+            <div className="w-10 h-10 border-4 border-orange-200 border-t-orange-500 rounded-full animate-spin" />
+          ) : (
+            <>
+              <p className="text-2xl font-bold text-gray-700 mb-4">Trip not found</p>
+              <Link href="/" className="text-orange-500 hover:underline flex items-center gap-2">
+                <ArrowLeft className="w-4 h-4" /> Back to Home
+              </Link>
+            </>
+          )}
         </div>
         <Footer />
       </main>
@@ -243,7 +245,7 @@ export default function TripDetailPage() {
                   <div className="grid sm:grid-cols-2 gap-8">
                     <div>
                       <h3 className="font-bold text-gray-900 text-lg mb-4 flex items-center gap-2">
-                        <CheckCircle className="w-5 h-5 text-green-500" /> What's Included
+                        <CheckCircle className="w-5 h-5 text-green-500" /> What&apos;s Included
                       </h3>
                       <ul className="space-y-2.5">
                         {trip.inclusions.map((item) => (
@@ -256,7 +258,7 @@ export default function TripDetailPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-gray-900 text-lg mb-4 flex items-center gap-2">
-                        <XCircle className="w-5 h-5 text-red-400" /> What's Not Included
+                        <XCircle className="w-5 h-5 text-red-400" /> What&apos;s Not Included
                       </h3>
                       <ul className="space-y-2.5">
                         {trip.exclusions.map((item) => (
@@ -331,118 +333,13 @@ export default function TripDetailPage() {
                 </div>
 
                 <div className="p-5 space-y-4">
-                  {/* Date Selection */}
-                  <div>
-                    <label className="block text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wide">
-                      Select Batch Date
-                    </label>
-                    <div className="flex flex-wrap gap-2">
-                      {trip.dates.map((date) => (
-                        <button
-                          key={date}
-                          onClick={() => setSelectedDate(date)}
-                          className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-all ${
-                            selectedDate === date
-                              ? "bg-orange-500 border-orange-500 text-white"
-                              : "border-gray-200 text-gray-600 hover:border-orange-300"
-                          }`}
-                        >
-                          {date}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {submitted ? (
-                    <div className="text-center py-6">
-                      <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-3" />
-                      <p className="font-bold text-gray-900 text-lg">Enquiry Sent!</p>
-                      <p className="text-gray-500 text-sm mt-1">Our team will call you within 24 hours.</p>
-                    </div>
-                  ) : (
-                    <form
-                      onSubmit={async (e) => {
-                        e.preventDefault();
-                        setBookingError("");
-                        setSubmitting(true);
-                        try {
-                          await submitLead({
-                            name: bookingForm.name,
-                            phone: bookingForm.phone,
-                            email: bookingForm.email,
-                            destination: `${trip.title} (${trip.location})`,
-                            adults: Number(bookingForm.people),
-                            notes: `Batch date: ${selectedDate} | Est. total: ₹${(trip.price * Number(bookingForm.people)).toLocaleString("en-IN")}`,
-                            source: "Website",
-                          });
-                          setSubmitted(true);
-                        } catch (err) {
-                          setBookingError(
-                            err instanceof Error ? err.message : "Something went wrong. Please call or WhatsApp us instead."
-                          );
-                        } finally {
-                          setSubmitting(false);
-                        }
-                      }}
-                      className="space-y-3"
-                    >
-                      <input
-                        type="text"
-                        placeholder="Your Full Name *"
-                        required
-                        value={bookingForm.name}
-                        onChange={(e) => setBookingForm({ ...bookingForm, name: e.target.value })}
-                        className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
-                      />
-                      <input
-                        type="tel"
-                        placeholder="Phone Number *"
-                        required
-                        value={bookingForm.phone}
-                        onChange={(e) => setBookingForm({ ...bookingForm, phone: e.target.value })}
-                        className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
-                      />
-                      <input
-                        type="email"
-                        placeholder="Email Address *"
-                        required
-                        value={bookingForm.email}
-                        onChange={(e) => setBookingForm({ ...bookingForm, email: e.target.value })}
-                        className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
-                      />
-                      <select
-                        value={bookingForm.people}
-                        onChange={(e) => setBookingForm({ ...bookingForm, people: e.target.value })}
-                        className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
-                      >
-                        {[1,2,3,4,5,6,7,8].map(n => (
-                          <option key={n} value={n}>{n} {n === 1 ? "Person" : "People"}</option>
-                        ))}
-                      </select>
-
-                      {/* Total */}
-                      <div className="bg-gray-50 rounded-xl p-3 text-sm">
-                        <div className="flex justify-between text-gray-600">
-                          <span>₹{trip.price.toLocaleString("en-IN")} × {bookingForm.people} person(s)</span>
-                          <span>₹{(trip.price * Number(bookingForm.people)).toLocaleString("en-IN")}</span>
-                        </div>
-                      </div>
-
-                      {bookingError && (
-                        <div className="flex items-center gap-2 text-red-600 text-xs bg-red-50 border border-red-100 rounded-xl px-3 py-2.5">
-                          <AlertCircle className="w-4 h-4 shrink-0" /> {bookingError}
-                        </div>
-                      )}
-
-                      <button
-                        type="submit"
-                        disabled={submitting}
-                        className="w-full bg-orange-500 hover:bg-orange-600 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-3.5 rounded-xl transition-all hover:shadow-lg hover:shadow-orange-300/40 text-base"
-                      >
-                        {submitting ? "Sending..." : `Book Now – ₹${(trip.price * Number(bookingForm.people)).toLocaleString("en-IN")}`}
-                      </button>
-                    </form>
-                  )}
+                  {/* Lead form — same structure as the landing page, with the
+                      package auto-fetched from this trip. */}
+                  <LandingLeadForm
+                    compact
+                    lockedPackage={`${trip.title} (${trip.location})`}
+                    source="Website – Trip Page"
+                  />
 
                   {/* Contact Options */}
                   <div className="flex gap-3 pt-1">
@@ -463,13 +360,6 @@ export default function TripDetailPage() {
                 </div>
               </div>
 
-              {/* EMI Banner */}
-              <div className="bg-blue-50 border border-blue-100 rounded-2xl p-4">
-                <p className="text-blue-800 font-semibold text-sm">💳 EMI Available</p>
-                <p className="text-blue-600 text-xs mt-1">
-                  Starting from ₹{Math.round(trip.price / 3).toLocaleString("en-IN")}/month with 0% interest on select cards
-                </p>
-              </div>
             </div>
           </div>
         </div>

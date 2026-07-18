@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Users, MapPin, Award, Heart, Star, CheckCircle } from "lucide-react";
 import { getAboutContent } from "@/lib/siteContent";
+import { memberInitials } from "@/lib/teamUtils";
 
 // Always render fresh so edits saved from the CRM show up without a rebuild.
 export const dynamic = "force-dynamic";
@@ -145,7 +146,13 @@ export default async function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {team.members.map((member) => (
               <div key={member.name} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 text-center hover:shadow-md transition">
-                <img src={member.image} alt={member.name} className="w-36 h-36 sm:w-40 sm:h-40 rounded-full object-cover mx-auto mb-5 border-4 border-orange-100 shadow-md" />
+                {member.image ? (
+                  <img src={member.image} alt={member.name} className="w-36 h-36 sm:w-40 sm:h-40 rounded-full object-cover mx-auto mb-5 border-4 border-orange-100 shadow-md" />
+                ) : (
+                  <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full mx-auto mb-5 border-4 border-orange-100 shadow-md bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white text-5xl font-bold">
+                    {memberInitials(member.name)}
+                  </div>
+                )}
                 <h3 className="font-bold text-gray-900 text-lg">{member.name}</h3>
                 <p className="text-orange-500 text-sm font-semibold mb-2">{member.role}</p>
                 <p className="text-gray-500 text-sm">{member.bio}</p>

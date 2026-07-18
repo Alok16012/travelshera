@@ -2,12 +2,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import TripCard from "./TripCard";
-import { trips } from "@/data/trips";
+import { usePackages } from "@/lib/packages";
 
 const categories = ["All", "Kashmir", "Mountains", "Pilgrimage", "Honeymoon"];
 
 export default function UpcomingTrips() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const { packages: trips } = usePackages();
 
   const filtered =
     activeCategory === "All"

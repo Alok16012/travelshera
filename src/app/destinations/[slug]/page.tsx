@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TripCard from "@/components/TripCard";
 import { destinations } from "@/data/destinations";
-import { trips } from "@/data/trips";
+import { usePackages } from "@/lib/packages";
 import { MapPin, Calendar, Thermometer, Mountain, ArrowLeft, ChevronDown, ChevronUp } from "lucide-react";
 
 export default function DestinationDetailPage() {
@@ -14,6 +14,7 @@ export default function DestinationDetailPage() {
   const dest = destinations.find((d) => d.slug === params.slug);
   const [activeImage, setActiveImage] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const { packages: trips } = usePackages();
 
   if (!dest) {
     return (

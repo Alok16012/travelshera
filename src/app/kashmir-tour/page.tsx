@@ -1,6 +1,8 @@
 import Image from "next/image";
 import type { Metadata } from "next";
+import Navbar from "@/components/Navbar";
 import LandingLeadForm from "@/components/LandingLeadForm";
+import LandingOfferPopup from "@/components/LandingOfferPopup";
 import {
   Star, Phone, MessageCircle, ShieldCheck, Award, Users, Clock,
   CheckCircle, MapPin, Snowflake, Heart, Mountain, Sparkles,
@@ -90,20 +92,15 @@ const CALL = "tel:+919149406965";
 export default function KashmirTourLanding() {
   return (
     <main className="bg-white text-gray-900">
-      {/* Offer bar */}
-      <div className="bg-orange-500 text-white text-center text-xs sm:text-sm font-semibold py-2 px-4">
-        ⚡ Limited Monsoon Offer — Kashmir packages from <span className="underline">₹8,999</span> · Free quote in 15 min
-      </div>
+      <Navbar />
+      <LandingOfferPopup />
 
-      {/* Top strip logo + call */}
-      <header className="flex items-center justify-between max-w-6xl mx-auto px-4 py-3">
-        <div className="bg-white rounded-lg">
-          <Image src="/sheralogo.png" alt="Shera Travels" width={130} height={44} className="h-9 w-auto object-contain" priority />
+      {/* Offer bar */}
+      <div className="pt-16">
+        <div className="bg-orange-500 text-white text-center text-xs sm:text-sm font-semibold py-2 px-4">
+          ⚡ Limited Monsoon Offer — Kashmir packages from <span className="underline">₹8,999</span> · Free quote in 15 min
         </div>
-        <a href={CALL} className="flex items-center gap-2 text-sm font-bold text-gray-900 hover:text-orange-500 transition">
-          <Phone className="w-4 h-4 text-orange-500" /> +91 91494 06965
-        </a>
-      </header>
+      </div>
 
       {/* HERO */}
       <section className="relative overflow-hidden">
@@ -140,7 +137,7 @@ export default function KashmirTourLanding() {
           </div>
 
           {/* Right form */}
-          <div className="lg:pl-6">
+          <div className="lg:pl-6" id="lead-form">
             <LandingLeadForm />
           </div>
         </div>

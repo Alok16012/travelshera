@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { CheckCircle, Send, AlertCircle, Phone, ShieldCheck } from "lucide-react";
+import { CheckCircle, Send, AlertCircle, Phone, ShieldCheck, MapPin } from "lucide-react";
 import { submitLead } from "@/lib/leads";
 
 const packages = [
@@ -11,13 +11,28 @@ const packages = [
   "Custom / Not sure yet",
 ];
 
-// Landing-page lead form for Meta ad traffic. Every submission lands in the
-// CRM tagged "Meta Ads" so the sales team can prioritise paid leads.
-export default function LandingLeadForm({ compact = false }: { compact?: boolean }) {
-  const [form, setForm] = useState({ name: "", phone: "", pkg: "", month: "", adults: "2" });
+type Props = {
+  compact?: boolean;
+  // When set, the package is auto-fetched from the current page and shown
+  // locked (no dropdown) — used on individual trip pages.
+  lockedPackage?: string;
+  // How the lead is tagged in the CRM.
+  source?: string;
+};
+
+// Lead form shared by the ad landing page and each trip page. On the landing
+// page the visitor picks a package; on a trip page the package is auto-filled.
+export default function LandingLeadForm({
+  compact = false,
+  lockedPackage,
+  source = "Meta Ads – Kashmir Landing Page",
+}: Props) {
+  const [form, setForm] = useState({ name: "", phone: "", pkg: lockedPackage || "", travelDate: "", adults: "2" });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+
+  const today = new Date().toISOString().split("T")[0];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,9 +44,10 @@ export default function LandingLeadForm({ compact = false }: { compact?: boolean
         phone: form.phone,
         whatsapp: form.phone,
         destination: form.pkg || "Kashmir Tour",
+        travel_date: form.travelDate || undefined,
         adults: parseInt(form.adults) || 1,
-        notes: `Travel month: ${form.month || "not specified"} · Package: ${form.pkg || "not selected"}`,
-        source: "Meta Ads – Kashmir Landing Page",
+        notes: `Expected travel date: ${form.travelDate || "not specified"} · Package: ${form.pkg || "not selected"}`,
+        source,
       });
       setSubmitted(true);
     } catch (err) {
@@ -79,25 +95,41 @@ export default function LandingLeadForm({ compact = false }: { compact?: boolean
           onChange={(e) => setForm({ ...form, phone: e.target.value })}
           className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
         />
-        <select
-          value={form.pkg} onChange={(e) => setForm({ ...form, pkg: e.target.value })}
-          className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 text-gray-700"
-        >
-          <option value="">Which package interests you?</option>
-          {packages.map((p) => <option key={p} value={p}>{p}</option>)}
-        </select>
-        <div className="grid grid-cols-2 gap-3">
-          <input
-            type="text" placeholder="Travel month" value={form.month}
-            onChange={(e) => setForm({ ...form, month: e.target.value })}
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100"
-          />
+        {lockedPackage ? (
+          <div>
+            <label className="block text-[11px] font-semibold text-gray-500 mb-1 uppercase tracking-wide">Your selected package</label>
+            <div className="w-full border border-orange-200 bg-orange-50 rounded-xl px-4 py-3 text-sm text-gray-800 flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-orange-500 shrink-0" />
+              <span className="font-semibold truncate">{lockedPackage}</span>
+            </div>
+          </div>
+        ) : (
           <select
-            value={form.adults} onChange={(e) => setForm({ ...form, adults: e.target.value })}
+            value={form.pkg} onChange={(e) => setForm({ ...form, pkg: e.target.value })}
             className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 text-gray-700"
           >
-            {["1", "2", "3", "4", "5", "6+"].map((n) => <option key={n} value={n}>{n} {n === "1" ? "traveller" : "travellers"}</option>)}
+            <option value="">Which package interests you?</option>
+            {packages.map((p) => <option key={p} value={p}>{p}</option>)}
           </select>
+        )}
+        <div className="grid grid-cols-2 gap-3">
+          <div>
+            <label className="block text-[11px] font-semibold text-gray-500 mb-1 uppercase tracking-wide">Expected travel date</label>
+            <input
+              type="date" value={form.travelDate} min={today}
+              onChange={(e) => setForm({ ...form, travelDate: e.target.value })}
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 text-gray-700"
+            />
+          </div>
+          <div>
+            <label className="block text-[11px] font-semibold text-gray-500 mb-1 uppercase tracking-wide">Travellers</label>
+            <select
+              value={form.adults} onChange={(e) => setForm({ ...form, adults: e.target.value })}
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 text-gray-700"
+            >
+              {["1", "2", "3", "4", "5", "6+"].map((n) => <option key={n} value={n}>{n} {n === "1" ? "traveller" : "travellers"}</option>)}
+            </select>
+          </div>
         </div>
         {error && (
           <div className="flex items-center gap-2 text-red-600 text-xs bg-red-50 border border-red-100 rounded-xl px-3 py-2.5">

@@ -8,6 +8,7 @@ export type LeadPayload = {
   whatsapp?: string;
   email?: string;
   destination?: string;
+  travel_date?: string; // YYYY-MM-DD
   adults?: number;
   notes?: string;
   source?: string;
@@ -25,6 +26,7 @@ export async function submitLead(payload: LeadPayload) {
       whatsapp: payload.whatsapp || payload.phone || null,
       email: payload.email || null,
       destination: payload.destination || null,
+      travel_date: payload.travel_date || null,
       adults: payload.adults || 1,
       notes: payload.notes || null,
       source: payload.source || "Website",
