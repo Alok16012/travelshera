@@ -34,7 +34,7 @@ const footerLinks = {
     { label: "FAQ", href: "/contact" },
     { label: "Tour Cancellation Policy", href: "/contact" },
     { label: "Refund Policy", href: "/contact" },
-    { label: "Privacy Policy", href: "/contact" },
+    { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms & Conditions", href: "/contact" },
   ],
 };
@@ -212,7 +212,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
           <p>© 2024 Shera Travels. All rights reserved. GST: 01KODPS7232P1ZE</p>
           <div className="flex items-center gap-4">
-            <Link href="/contact" className="hover:text-orange-400 transition-colors">Privacy Policy</Link>
+            <Link href="/privacy" className="hover:text-orange-400 transition-colors">Privacy Policy</Link>
             <Link href="/contact" className="hover:text-orange-400 transition-colors">Terms</Link>
             <Link href="/" className="hover:text-orange-400 transition-colors">Sitemap</Link>
           </div>
