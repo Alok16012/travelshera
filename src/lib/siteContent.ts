@@ -147,16 +147,27 @@ function mergeAbout(stored: unknown): AboutContent {
 // Fetch the About content from Supabase, falling back to defaults on any
 // error (Supabase unconfigured, table missing, empty row, etc.).
 export async function getAboutContent(): Promise<AboutContent> {
-  if (!supabase) return defaultAbout;
+  if (!supabase) {
+    console.error("[about] Supabase not configured — serving fallback content");
+    return defaultAbout;
+  }
   try {
     const { data, error } = await supabase
       .from("site_content")
       .select("value")
       .eq("key", "about")
       .maybeSingle();
-    if (error || !data) return defaultAbout;
+    if (error) {
+      console.error("[about] Supabase query failed — serving fallback content:", error.message);
+      return defaultAbout;
+    }
+    if (!data) {
+      console.error("[about] No site_content row with key='about' — serving fallback content");
+      return defaultAbout;
+    }
     return mergeAbout(data.value);
-  } catch {
+  } catch (e) {
+    console.error("[about] Unexpected error — serving fallback content:", e);
     return defaultAbout;
   }
 }

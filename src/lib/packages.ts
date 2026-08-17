@@ -13,16 +13,27 @@ function isValidList(v: unknown): v is TripDetail[] {
 }
 
 export async function fetchPackages(): Promise<TripDetail[]> {
-  if (!supabase) return defaultTrips;
+  if (!supabase) {
+    console.error("[packages] Supabase not configured — serving fallback packages");
+    return defaultTrips;
+  }
   try {
     const { data, error } = await supabase
       .from("site_content")
       .select("value")
       .eq("key", "packages")
       .maybeSingle();
-    if (error || !data) return defaultTrips;
+    if (error) {
+      console.error("[packages] Supabase query failed — serving fallback packages:", error.message);
+      return defaultTrips;
+    }
+    if (!data) {
+      console.error("[packages] No site_content row with key='packages' — serving fallback packages");
+      return defaultTrips;
+    }
     return isValidList(data.value) ? (data.value as TripDetail[]) : defaultTrips;
-  } catch {
+  } catch (e) {
+    console.error("[packages] Unexpected error — serving fallback packages:", e);
     return defaultTrips;
   }
 }
